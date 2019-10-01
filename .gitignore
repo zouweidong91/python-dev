@@ -1,0 +1,12 @@
+.vscode
+venv
+jupyter-env
+.ipynb_checkpoints
+logs
+
+*.log
+help/local_*
+
+.DS_Store
+__pycache__
+*.pyc

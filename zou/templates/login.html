@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/commons.css">
+    <style>
+        label{
+            width: 80px;
+            text-align: right;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <form action="login" method="post">
+        <p>
+            <label for="usernam">用户名：</label>
+            <input id="username" name="user" type="text /">
+        </p>
+        <p>
+            <label for="password">密码：</label>
+            <input id="password" name="pwd" type="password /">
+            <input  type="submit" value="提交">
+            <spqn>{{error_msg}}</spqn>
+        </p>
+
+    </form>
+</body>
+</html>
