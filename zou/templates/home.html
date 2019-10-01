@@ -7,12 +7,22 @@
 <body style="margin: 0%">
     <div style="height: 48px; background-color: #dddddd"></div>
     <div>
+        <form action="/home" method="POST">
+            <input type="text" name="username" placeholder="用户名">
+            <input type="text" name="email" placeholder="邮箱">
+            <input type="text" name="gender"placeholder="性别">
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <div>
         <table>
+            {% for row in user_list %}
             <tr>
-                <td>lijie</td>
-                <td>lijie</td>
-                <td>lijie</td>
+                <td>{{row.username}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.gender}}</td>
             </tr>
+            {% endfor %}
         </table>
     </div>
 </body>
