@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/commons.css">
+    <style>
+        label{
+            width: 80px;
+            text-align: right;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for k,row in user_dict.items %}
+            <li>
+                <a target="__blank" href="/detail-{{k}}.html">{{row}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
