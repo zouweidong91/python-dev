@@ -25,7 +25,13 @@
         </div>
     
         <div style="position: absolute; top:48px; left:210px; bottom:0;right:0; overflow: auto;">
-
+            <h1>编辑用户</h1>
+            <form action="/cmdb/useredit-{{obj.id}}/" method="POST">
+                <input style="display: none" type="text" name="id" value="{{obj.id}}">
+                <input type="text" name="username" value="{{obj.username}}">
+                <input type="text" name="password" value="{{obj.password}}">
+                <input type="submit" value="提交">
+            </form>
         </div>
     </div>
 </body>

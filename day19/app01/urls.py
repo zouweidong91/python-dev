@@ -17,20 +17,17 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from app01 import views
 
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('cmdb/', include('app01.urls')),
-]
-
-
 '''
+re_path  正则表达式
+'''
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', views.index),
     path('login/', views.login),
+    path('orm/', views.orm),
     path('index/', views.index),
-    # path('detail/', views.detail),
-    re_path('^detail-(\d+).html', views.detail),
+    path('user_info/', views.user_info),
+    re_path('userdetail-(?P<nid>\d+)/', views.user_detail),
+    re_path('userdel-(?P<nid>\d+)/', views.user_del),
+    re_path('useredit-(?P<nid>\d+)/', views.user_edit),
 ]
-'''
