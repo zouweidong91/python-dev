@@ -1,5 +1,9 @@
 import socket
 
+'''
+python -m front_end.socket_server
+'''
+
 '''该socket服务端 所有web框架的本质'''
 def handle_request(client):
     buf = client.recv(1024)
