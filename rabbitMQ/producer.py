@@ -3,6 +3,7 @@ python -m rabbitMQ.producer
 '''
 
 import pika
+import time
 
 # 建立一个基本的socket
 connecttion = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -11,7 +12,7 @@ channel.queue_declare(queue = 'hello') #s声明一个队列
 channel.basic_publish(
     exchange = '',
     routing_key = 'hello',
-    body = 'Hello World'
+    body = 'Hello World {}'.format(time.strftime('%H:%M:%S',time.localtime(time.time())))
 )
-print('[x] Sent hello world')
+print('[x] Sent hello orld', time.strftime('%H:%M:%S',time.localtime(time.time())))
 connecttion.close()

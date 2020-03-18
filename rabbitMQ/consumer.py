@@ -10,7 +10,7 @@ channel = connecttion.channel() # 声明一个管道
 channel.queue_declare(queue = 'hello') #s声明一个队列
 
 def callback(ch, method, properties, body):
-   print(ch, method, properties)
+   # print(ch, method, properties)
    print('[x] received %r'%body)
 
 channel.basic_consume(
