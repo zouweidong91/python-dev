@@ -1,0 +1,65 @@
+version: '3.5'
+x-logging:
+    &es-logging
+    options:
+      max-size: '100m'
+      max-file: '10'
+    driver: json-file
+
+services:
+  elasticsearch:
+    # image: registry.cn-shenzhen.aliyuncs.com/baoping/elasticsearch:lts
+    image: elasticsearch:6.6.2
+    container_name: elasticsearch
+    environment:
+      - cluster.name=cedb-es-release
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /data/es/esdata2:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+    logging: *es-logging
+    restart: on-failure
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 120s
+  kibana:
+    # build: 
+    #   context: ./
+    image: kibana:6.6.2
+    container_name: es-kibana
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+    logging: *es-logging
+    depends_on:
+      - "elasticsearch"
+    restart: on-failure
+    command: /bin/bash -c "sleep 10 && echo 'Run - '`date` && kibana-docker"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 5
+        window: 120s
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+
+networks:
+  esnet:
