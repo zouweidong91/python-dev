@@ -6,6 +6,15 @@ dev 模式
 docker run --rm  -p 9200:9200 -e "discovery.type=single-node" elasticsearch:6.6.2 
 docker run --rm -p 5601:5601  kibana:6.6.2 
 
+从阿里云服务器拉取镜像  官方源太慢了
+docker login --username=zouweidong72 registry.cn-shenzhen.aliyuncs.com
+
+# debug
+* 本机服务
+elasticsearch 和 kibana 版本需一致 否则Kibana server is not ready yet
+http://localhost:5601
+
+
 # 启动服务
 启动服务: `docker-compose up -d`  
 关闭服务: `docker-compose down`  
