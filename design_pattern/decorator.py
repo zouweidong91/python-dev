@@ -37,6 +37,7 @@ class Milk(CondimentDecorator):
         self.beverage = beverage
 
     def get_description(self):
+        print('Decorator Milk')
         return self.beverage.get_description() + ' Milk'
     def cost(self):
         return self.beverage.cost() + .2
@@ -46,6 +47,7 @@ class Mocha(CondimentDecorator):
         super(Mocha, self).__init__()
         self.beverage = beverage
     def get_description(self):
+        print('Decorator Mocha')
         return self.beverage.get_description() + ' Mocha'
     def cost(self):
         return self.beverage.cost() + .3
@@ -61,3 +63,6 @@ if __name__ == "__main__":
 
     print('{0}:{1}'.format(beverage.get_description(), '%.3f'%beverage.cost()))
 
+'''
+python design_pattern\decorator.py
+'''
